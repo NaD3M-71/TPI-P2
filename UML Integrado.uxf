@@ -1,0 +1,43 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>10</x><y>140</y><w>210</w><h>300</h></coordinates><panel_attributes>Empleados
+--
+-dni: String
+-nombre: String
+-apellido: String
+-email: String
+-eliminado: boolean
+-fechaIngreso: date
+-area: String
+-legajo: Legajo
+--
++Empleado (String, String, String, String, boolean,date, String
++getNombreCompleto (): String
++getEmail(): String
++getDni(): String
++isEliminado():boolean
++getFechaIngreso(): date
++getArea():String
++getLegajo():Legajo
++setLegajo(set):void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>130</y><w>210</w><h>350</h></coordinates><panel_attributes>Legajos
+--
+-nroLegajo: String
+-eliminado: Boolean
+-categoria: String
+-estado: Estado
+-fechaAlta: date
+-observaciones: String
+--
++Legajo(String, Boolean, String, Estado, date, String)
++getNroLegajo(): String
++getEliminado():boolean
++getCategoria():String
++getEstado():Estado
++getFechaAlta():date
++getObservaciones(): String
++setNroLegajo(String): void
++setEliminado (boolean): void
++setCategoria(String): void
++setEstado(Estado):void
++setFechaIngreso(date):void
++setObservaciones(String):void
++toString (): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>260</y><w>280</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>260;10;10;10</additional_attributes></element></diagram>
