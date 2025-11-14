@@ -5,6 +5,7 @@
 
 package DAO;
 
+<<<<<<< HEAD
 import Config.DatabaseConnection;
 import Models.Legajo;
 import java.sql.Connection;
@@ -181,3 +182,12 @@ public List<Legajo> leerTodos() {
  
 }
 
+=======
+/**
+ *
+ * @author Giuliano Scaglioni
+ */
+public class LegajoDAO {
+
+}
+>>>>>>> b8e45f776083cea272096cacc132fe4fca31d999
