@@ -12,10 +12,8 @@ import Main.Estado;
  * @author Giuliano Scaglioni
  */
 public class Empleado {
-<<<<<<< HEAD
+
     private int id;
-=======
->>>>>>> b8e45f776083cea272096cacc132fe4fca31d999
     private String dni; //PK
     private String nombre;
     private String apellido;
@@ -38,7 +36,7 @@ public class Empleado {
     this.legajo = legajo;
 }
     
-<<<<<<< HEAD
+
     
      // Getters
     public String getNombre(){
@@ -54,14 +52,8 @@ public class Empleado {
     }
 
     public String getEmail() {
-=======
-    // Getters
-    public String getNombreCompleto(){
-        return nombre+", "+apellido ;
-    }
-    public String getEmail(){
->>>>>>> b8e45f776083cea272096cacc132fe4fca31d999
         return email;
+  
     }
     public String getDni() {
         return dni;
@@ -113,7 +105,7 @@ public class Empleado {
         
     }
     
-<<<<<<< HEAD
+
     // setters
     public void setId(int id) {
         this.id = id;
@@ -148,8 +140,7 @@ public class Empleado {
 
 
     
-=======
->>>>>>> b8e45f776083cea272096cacc132fe4fca31d999
+
     @Override
     public String toString() {
     return "Empleado{" +
@@ -162,9 +153,4 @@ public class Empleado {
            ", legajo=" + (legajo != null ? legajo.getNroLegajo() : "sin asignar") +
            '}';
     }
-<<<<<<< HEAD
-    
-=======
->>>>>>> b8e45f776083cea272096cacc132fe4fca31d999
-
 }

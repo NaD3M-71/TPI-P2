@@ -11,10 +11,7 @@ import Main.Estado;
  * @author Giuliano Scaglioni
  */
 public class Legajo {
-<<<<<<< HEAD
     private int id;
-=======
->>>>>>> b8e45f776083cea272096cacc132fe4fca31d999
     private String nroLegajo;
     private Boolean eliminado;
     private String categoria;
@@ -43,11 +40,9 @@ public class Legajo {
     public Estado getEstado() { return estado; }
     public java.time.LocalDate getFechaAlta() { return fechaAlta; }
     public String getObservaciones() { return observaciones; }
-<<<<<<< HEAD
     public int getId() { return id; }
     
-=======
->>>>>>> b8e45f776083cea272096cacc132fe4fca31d999
+
 
     
     //settersLegajo
@@ -57,12 +52,11 @@ public class Legajo {
     public void setEstado(Estado estado) { this.estado = estado; }
     public void setFechaIngreso(java.time.LocalDate fechaAlta) { this.fechaAlta = fechaAlta; }
     public void setObservaciones(String observaciones) { this.observaciones = observaciones; }
-<<<<<<< HEAD
+
 
     public void setId(int id) { this.id = id;}
     
-=======
->>>>>>> b8e45f776083cea272096cacc132fe4fca31d999
+
     
     public static String generarNroLegajoUnico() {
     return "LEG-" + java.util.UUID.randomUUID().toString();

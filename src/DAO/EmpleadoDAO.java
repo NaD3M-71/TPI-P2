@@ -5,7 +5,7 @@
 
 package DAO;
 
-<<<<<<< HEAD
+
 import Config.DatabaseConnection;
 import Models.Empleado;
 import Models.Legajo;
@@ -17,13 +17,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-=======
->>>>>>> b8e45f776083cea272096cacc132fe4fca31d999
+
 /**
  *
  * @author Giuliano Scaglioni
  */
-<<<<<<< HEAD
+
 public class EmpleadoDAO implements GenericDAO<Empleado>{
     public void crear (Empleado empleado){
         String sql = "INSERT INTO empleado (dni, nombre, apellido, email, fecha_ingreso, area, legajo_nro_legajo, eliminado) VALUES (?,?,?,?,?,?,?,?)";
@@ -212,8 +211,4 @@ public void actualizar(Empleado empleado){
                 
     }
 }    
-=======
-public class EmpleadoDAO {
 
-}
->>>>>>> b8e45f776083cea272096cacc132fe4fca31d999
