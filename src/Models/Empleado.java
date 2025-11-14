@@ -12,6 +12,8 @@ import Main.Estado;
  * @author Giuliano Scaglioni
  */
 public class Empleado {
+
+    private Long id;
     private String dni; //PK
     private String nombre;
     private String apellido;
@@ -22,6 +24,8 @@ public class Empleado {
     private Legajo legajo;
     
     // constructor
+    public Empleado(){};
+    
     public Empleado(String dni, String nombre, String apellido, String email,
                 boolean eliminado, java.time.LocalDate fechaIngreso, String area, Legajo legajo) {
     this.dni = dni;
@@ -34,12 +38,24 @@ public class Empleado {
     this.legajo = legajo;
 }
     
-    // Getters
-    public String getNombreCompleto(){
-        return nombre+", "+apellido ;
+
+    
+     // Getters
+    public String getNombre(){
+        return nombre;
     }
-    public String getEmail(){
+
+    public Long getId() {
+        return id;
+    }
+    
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getEmail() {
         return email;
+  
     }
     public String getDni() {
         return dni;
@@ -80,7 +96,7 @@ public class Empleado {
         legajo.setEliminado(false);
         legajo.setCategoria(categoria);
         legajo.setEstado(estado);
-        legajo.setFechaIngreso(fechaIngreso);
+        legajo.setFechaAlta(fechaIngreso);
         legajo.setObservaciones(observaciones);
 
         return new Empleado(dni, nombre, apellido, email, false, fechaIngreso, area, legajo);
@@ -91,6 +107,42 @@ public class Empleado {
         
     }
     
+
+    // setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setEliminado(boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+
+    public void setFechaIngreso(java.time.LocalDate fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+
+    
+
     @Override
     public String toString() {
     return "Empleado{" +
@@ -103,5 +155,4 @@ public class Empleado {
            ", legajo=" + (legajo != null ? legajo.getNroLegajo() : "sin asignar") +
            '}';
     }
-
 }
