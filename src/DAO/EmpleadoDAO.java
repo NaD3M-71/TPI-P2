@@ -151,7 +151,10 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
 
         while (rs.next()) {
             // Crear el objeto Empleado con el constructor correcto
+            
             Empleado empleado = new Empleado(
+                    
+                rs.getLong("id"),    
                 rs.getString("dni"),
                 rs.getString("nombre"),
                 rs.getString("apellido"),
@@ -163,7 +166,7 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
             );
 
             // Asignar el ID
-            empleado.setId(rs.getLong("id"));
+            //empleado.setId(rs.getLong("id"));
 
             // Crear y asignar el Legajo
             Legajo legajo = new Legajo();

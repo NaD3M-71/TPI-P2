@@ -38,6 +38,20 @@ public class Empleado {
     this.legajo = legajo;
 }
     
+    public Empleado(long id, String dni, String nombre, String apellido, String email,
+                boolean eliminado, java.time.LocalDate fechaIngreso, String area, Legajo legajo) {
+    
+    this.id = id;
+    this.dni = dni;
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.email = email;
+    this.eliminado = eliminado;
+    this.fechaIngreso = fechaIngreso;
+    this.area = area;
+    this.legajo = legajo;
+}
+    
 
     
      // Getters
@@ -79,6 +93,7 @@ public class Empleado {
     }
     //crearEmpleado
     public static Empleado crearEmpleado(
+        long id,    
         String dni,
         String nombre,
         String apellido,
@@ -99,7 +114,7 @@ public class Empleado {
         legajo.setFechaAlta(fechaIngreso);
         legajo.setObservaciones(observaciones);
 
-        return new Empleado(dni, nombre, apellido, email, false, fechaIngreso, area, legajo);
+        return new Empleado(id,dni, nombre, apellido, email, false, fechaIngreso, area, legajo);
     }
 
 
@@ -145,7 +160,8 @@ public class Empleado {
 
     @Override
     public String toString() {
-    return "Empleado{" +
+    return "Empleado{" + 
+           ", id='" + id + '\'' +
            ", dni='" + dni + '\'' +
            ", nombre='" + nombre + '\'' +
            ", apellido='" + apellido + '\'' +

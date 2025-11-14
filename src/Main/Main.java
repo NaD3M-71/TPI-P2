@@ -122,7 +122,7 @@ public class Main {
                 () -> {
                     try{
                         List<Empleado> empleados = empleadoService.getAll();
-                        System.out.println("-------LISTA DE EMPLEADOS-------");
+                        System.out.println("-------LISTA DE EMPLEADOSsssss-------");
                         for (Empleado emp: empleados){
                             System.out.println(emp);
                         }
