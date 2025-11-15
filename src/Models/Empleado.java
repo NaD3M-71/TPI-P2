@@ -160,15 +160,14 @@ public class Empleado {
 
     @Override
     public String toString() {
-    return "Empleado{" + 
-           ", id='" + id + '\'' +
-           ", dni='" + dni + '\'' +
-           ", nombre='" + nombre + '\'' +
-           ", apellido='" + apellido + '\'' +
-           ", email='" + email + '\'' +
-           ", area='" + area + '\'' +
-           ", fechaIngreso=" + fechaIngreso +
-           ", legajo=" + (legajo != null ? legajo.getNroLegajo() : "sin asignar") +
-           '}';
-    }
+    return  "Empleado\n" +
+            "ID: " + id + "\n" +
+            "DNI: " + dni + "\n" +
+            "Nombre completo: " + nombre + " " + apellido + "\n" +
+            "Email: " + email + "\n" +
+            "Área: " + area + "\n" +
+            "Fecha de ingreso: " + fechaIngreso + "\n" +
+            "Legajo: " + (legajo != null ? legajo.getNroLegajo() : "sin asignar") +
+            "\n";
+}
 }

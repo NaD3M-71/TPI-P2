@@ -25,6 +25,7 @@ public class Main {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         EmpleadoService empleadoService = new EmpleadoService();
+
         LegajoService legajoService =new LegajoService();
         try {
             //EmpleadoService empleadoService = new EmpleadoService();
@@ -65,6 +66,46 @@ public class Main {
         } catch (Exception e) {
             System.err.println("❌ Error en la prueba: " + e.getMessage());
         }
+//        try {
+//            //EmpleadoService empleadoService = new EmpleadoService();
+//
+//            // -----------------------------
+//            // CREAR LEGAJO (OBJETO EN MEMORIA)
+//            // -----------------------------
+//            Legajo leg = new Legajo();
+//            leg.setNroLegajo("L-1001");
+//            leg.setCategoria("Administrativo");
+//            leg.setEstado(Estado.ACTIVO);
+//            leg.setFechaAlta(java.time.LocalDate.now());
+//            leg.setObservaciones("Sin observaciones");
+//            leg.setEliminado(false);
+//
+//            // ------------------------23-----
+//            // CREAR EMPLEADO (OBJETO)
+//            // -----------------------------
+//            Empleado emp = new Empleado();
+//            emp.setDni("40123456");
+//            emp.setNombre("Juan");
+//            emp.setApellido("Pérez");
+//            emp.setEmail("juan.perez@test.com");
+//            emp.setFechaIngreso(java.time.LocalDate.of(2024, 1, 1));
+//            emp.setArea("Recursos Humanos");
+//            emp.setEliminado(false);
+//
+//            // ASIGNAR EL LEGAJO
+//            emp.setLegajo(leg);
+//
+//            // -----------------------------
+//            // INSERTAR
+//            // -----------------------------
+//            empleadoService.insertar(emp);
+//
+//            System.out.println("\n✔ Prueba finalizada: empleado insertado con legajo.");
+//
+//        } catch (Exception e) {
+//            System.err.println("❌ Error en la prueba: " + e.getMessage());
+//        }
+
     
             String[] opciones={"Ingresar Empleado","Listar empleados","Buscar empleado por ID","Actualizar Empleado","Listar legajos", "Buscar legajos por ID","Actualizar informacion de legajos", "Eliminar",};
             Runnable[] acciones = {
@@ -94,6 +135,9 @@ public class Main {
                     
                         System.out.print("Ingrese Área: ");
                         String area = scanner.nextLine();
+                        
+                        System.out.print("Opcional - Ingrese Email: ");
+                        String email = scanner.nextLine();
                     
                         // Opcional: Solicitar fecha de ingreso (manejo simple)
                         System.out.print("Ingrese Fecha de Ingreso (YYYY-MM-DD): ");
@@ -113,6 +157,7 @@ public class Main {
                         nuevoEmpleado.setNombre(nombre);
                         nuevoEmpleado.setApellido(apellido);
                         nuevoEmpleado.setArea(area);
+                        nuevoEmpleado.setEmail(email);
                         nuevoEmpleado.setFechaIngreso(fechaIngreso);
                     
                         // Asignar el nuevo Legajo
@@ -145,13 +190,26 @@ public class Main {
                         return; // Sale del método run
                         }
                         List<Empleado> empleados = empleadoService.getAll();
+
                         for (Empleado emp: empleados){
                             System.out.println(emp);
+
+                        
+                        
+                            System.out.println(
+                                "ID: " + emp.getId() + " | " +
+                                "Nombre: " + emp.getNombre() + " " + emp.getApellido() + " | " +
+                                "Área: " + emp.getArea() + " | " +
+                                "Legajo: " + (emp.getLegajo() != null ? emp.getLegajo().getNroLegajo() : "sin asignar")
+                            );
+
+                        
                         }
                     } catch (Exception e) {
                         System.err.println("❌ Error al obtener empleados: "+ e.getMessage());
                     }
-                },
+                    
+                },    
                 () ->{
                     try{
                         System.out.println("\n-------BUSQUEDA DE EMPLEADOS POR ID-------\n");
@@ -172,7 +230,7 @@ public class Main {
                         Empleado empleado = empleadoService.getById(id);
                         
                         if (empleado != null){
-                            System.out.println("Empleado encontrado: " + empleado);
+                            System.out.println("Empleado encontrado: \n" + empleado.toString());
                         } else {
                             System.out.println("No existe empleado con ese ID.");
                         }

@@ -195,6 +195,7 @@ public class EmpleadoService implements GenericService<Empleado>{
             if (empleado == null){
                 System.out.println("No se encontró un empleado con el ID especificado");
             } 
+            empleado.toString();
             return empleado;
         }catch( Exception e){
             System.out.println("Error obteniendo el legajo por ID: "+ e.getMessage());

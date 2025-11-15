@@ -108,6 +108,7 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
         } catch (NumberFormatException e){
             System.err.println("Id invalido: "+ e.getMessage());
         }
+        
         return empleado;
     }
     //Actualizar empleado
@@ -182,9 +183,6 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
     }
         if (empleados.isEmpty()){
             System.out.println("No hay empleados en la base de datos");
-        } else {
-            System.out.println("\n LISTA DE EMPLEADOS");
-            empleados.forEach(System.out::println);
         }
     return empleados;
 }
