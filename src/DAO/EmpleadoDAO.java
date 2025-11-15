@@ -190,8 +190,10 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
 
     @Override
     public void eliminar (Long id,Connection conn){
-    String sql = "DELETE FROM empleado WHERE id=?";
+    String sql = "UPDATE empleado SET eliminado = TRUE WHERE id = ?";
 
+
+    // baja logica de empleado
     try (PreparedStatement stmt = conn.prepareStatement(sql)){
         stmt.setLong(1, id);
 
@@ -203,6 +205,8 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
         }else {
             System.out.println("No se encontro el empleado con ID: "+id);
         }
+
+        
     } catch (SQLException e){
         System.err.println("Error al eliminar el empleado: " + e.getMessage());
     } catch (NumberFormatException e){

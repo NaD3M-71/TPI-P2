@@ -60,7 +60,7 @@ public class LegajoDAO implements GenericDAO<Legajo> {
     //Mostrar legajo por ID
     @Override
     public Legajo leerPorId(Long id, Connection conn) {
-    String sql = "SELECT legajo_nro_legajo FROM empleado WHERE id = ?";
+    String sql = "SELECT * FROM legajo WHERE id = ?";
     Legajo legajo = null;
 
     try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -69,8 +69,17 @@ public class LegajoDAO implements GenericDAO<Legajo> {
         ResultSet rs = stmt.executeQuery();
 
         if (rs.next()) {
-            legajo = new Legajo();
-            legajo.setNroLegajo(rs.getString("legajo_nro_legajo"));
+            legajo = new Legajo(
+                    rs.getString("nro_legajo"),
+                    rs.getBoolean("eliminado"),
+                    rs.getString("categoria"),
+                    Estado.valueOf(rs.getString("estado")),
+                    rs.getDate("fecha_alta").toLocalDate(),
+                    rs.getString("observaciones")
+            );
+            legajo.setId(rs.getLong("id"));
+
+            
         } else {
             System.out.println("Empleado no encontrado");
         }
@@ -145,9 +154,6 @@ public class LegajoDAO implements GenericDAO<Legajo> {
 
         if (legajos.isEmpty()) {
             System.out.println("No hay legajos en la base de datos");
-        } else {
-            System.out.println("\n LISTA DE LEGAJOS");
-            legajos.forEach(System.out::println);
         }
 
         return legajos;
@@ -155,7 +161,7 @@ public class LegajoDAO implements GenericDAO<Legajo> {
     
     @Override
     public void eliminar (Long id, Connection conn){
-        String sql = "DELETE FROM legajo WHERE id=?";
+        String sql = "UPDATE legajo SET eliminado = TRUE WHERE id = ?";
                
         try (PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setLong(1, id);

@@ -22,8 +22,7 @@ public class Legajo {
     // constructor
     public Legajo() {}
 
-    public Legajo(String nroLegajo, Boolean eliminado, String categoria,
-                  Estado estado, java.time.LocalDate fechaAlta, String observaciones) {
+    public Legajo(String nroLegajo, Boolean eliminado, String categoria,Estado estado, java.time.LocalDate fechaAlta, String observaciones) {
 
         this.nroLegajo = nroLegajo;
         this.eliminado = eliminado;
@@ -65,13 +64,14 @@ public class Legajo {
     
     @Override
     public String toString() {
-        return "Legajo{" +
-               ", nroLegajo='" + nroLegajo + '\'' +
-               ", categoria='" + categoria + '\'' +
-               ", estado=" + estado +
-               ", fechaAlta=" + fechaAlta +
-               ", observaciones='" + observaciones + '\'' +
-               '}';
+        return  "Legajo\n" +
+            "ID: " + id + "\n" +
+            "Número de legajo: " + nroLegajo + "\n" +
+            "Categoría: " + categoria + "\n" +
+            "Estado: " + estado + "\n" +
+            "Fecha de alta: " + fechaAlta + "\n" +
+            "Observaciones: " + (observaciones == null ? "Sin Observaciones": observaciones) +"\n"+
+            "Eliminado: " + (eliminado == true ? "Si" : "No");
     }
 
 }

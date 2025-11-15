@@ -154,8 +154,9 @@ public class EmpleadoService implements GenericService<Empleado>{
             if( existente == null){
                 throw new IllegalStateException("No existe un empleado con el ID especificado");
             }
-            // ejecutamos baja logica
+            // ejecutamos baja logica tanto de empleado como de legajo
             empleadoDAO.eliminar(id, conn);
+            legajoDAO.eliminar(id, conn);
             
             // confirmamos transaccion
             conn.commit();

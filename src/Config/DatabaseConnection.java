@@ -14,7 +14,7 @@ public class DatabaseConnection {
     // Usuario de la BD
     private static final String USER = System.getProperty("db.user", "root");
     // Password de la BD
-    private static final String PASSWORD = System.getProperty("db.password", "Heberato1990");  
+    private static final String PASSWORD = System.getProperty("db.password", "");  
     
     public static Connection getConnection() throws SQLException {
         validateConfiguration();

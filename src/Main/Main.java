@@ -27,86 +27,7 @@ public class Main {
         EmpleadoService empleadoService = new EmpleadoService();
 
         LegajoService legajoService =new LegajoService();
-        try {
-            //EmpleadoService empleadoService = new EmpleadoService();
 
-            // -----------------------------
-            // CREAR LEGAJO (OBJETO EN MEMORIA)
-            // -----------------------------
-            Legajo leg = new Legajo();
-            leg.setNroLegajo("L-1001");
-            leg.setCategoria("Administrativo");
-            leg.setEstado(Estado.ACTIVO);
-            leg.setFechaAlta(java.time.LocalDate.now());
-            leg.setObservaciones("Sin observaciones");
-            leg.setEliminado(false);
-
-            // -----------------------------
-            // CREAR EMPLEADO (OBJETO)
-            // -----------------------------
-            Empleado emp = new Empleado();
-            emp.setDni("40123456");
-            emp.setNombre("Juan");
-            emp.setApellido("Pérez");
-            emp.setEmail("juan.perez@test.com");
-            emp.setFechaIngreso(java.time.LocalDate.of(2024, 1, 1));
-            emp.setArea("Recursos Humanos");
-            emp.setEliminado(false);
-
-            // ASIGNAR EL LEGAJO
-            emp.setLegajo(leg);
-
-            // -----------------------------
-            // INSERTAR
-            // -----------------------------
-            empleadoService.insertar(emp);
-
-            System.out.println("\n✔ Prueba finalizada: empleado insertado con legajo.");
-
-        } catch (Exception e) {
-            System.err.println("❌ Error en la prueba: " + e.getMessage());
-        }
-//        try {
-//            //EmpleadoService empleadoService = new EmpleadoService();
-//
-//            // -----------------------------
-//            // CREAR LEGAJO (OBJETO EN MEMORIA)
-//            // -----------------------------
-//            Legajo leg = new Legajo();
-//            leg.setNroLegajo("L-1001");
-//            leg.setCategoria("Administrativo");
-//            leg.setEstado(Estado.ACTIVO);
-//            leg.setFechaAlta(java.time.LocalDate.now());
-//            leg.setObservaciones("Sin observaciones");
-//            leg.setEliminado(false);
-//
-//            // ------------------------23-----
-//            // CREAR EMPLEADO (OBJETO)
-//            // -----------------------------
-//            Empleado emp = new Empleado();
-//            emp.setDni("40123456");
-//            emp.setNombre("Juan");
-//            emp.setApellido("Pérez");
-//            emp.setEmail("juan.perez@test.com");
-//            emp.setFechaIngreso(java.time.LocalDate.of(2024, 1, 1));
-//            emp.setArea("Recursos Humanos");
-//            emp.setEliminado(false);
-//
-//            // ASIGNAR EL LEGAJO
-//            emp.setLegajo(leg);
-//
-//            // -----------------------------
-//            // INSERTAR
-//            // -----------------------------
-//            empleadoService.insertar(emp);
-//
-//            System.out.println("\n✔ Prueba finalizada: empleado insertado con legajo.");
-//
-//        } catch (Exception e) {
-//            System.err.println("❌ Error en la prueba: " + e.getMessage());
-//        }
-
-    
             String[] opciones={"Ingresar Empleado","Listar empleados","Buscar empleado por ID","Actualizar Empleado","Listar legajos", "Buscar legajos por ID","Actualizar informacion de legajos", "Eliminar",};
             Runnable[] acciones = {
             
@@ -194,8 +115,7 @@ public class Main {
                         for (Empleado emp: empleados){
                             System.out.println(emp);
 
-                        
-                        
+
                             System.out.println(
                                 "ID: " + emp.getId() + " | " +
                                 "Nombre: " + emp.getNombre() + " " + emp.getApellido() + " | " +
@@ -307,7 +227,12 @@ public class Main {
                         }
                         List<Legajo> legajos = legajoService.getAll();
                         for (Legajo legajo: legajos){
-                            System.out.println(legajo);
+                            System.out.println(
+                                "ID: " + legajo.getId() + " | " +
+                                "Número de legajo: " + legajo.getNroLegajo() + " | " +
+                                "Categoría: " + legajo.getCategoria() + " | " +
+                                "Estado: " + legajo.getEstado()
+                            );
                         }
                     } catch (Exception e) {
                         System.err.println("❌ Error al obtener legajos: "+ e.getMessage());
@@ -362,7 +287,7 @@ public class Main {
                             return;
                         }
                         
-                        System.out.println("Datos actuales: " + legajo);
+                        System.out.println("Datos actuales: \n" + legajo.toString());
                         
                         System.out.println("Ingrese nuevo Nro de legajo (Legajo actual: "+ legajo.getNroLegajo() +"):");
                         String Nlegajo = scanner.nextLine();
