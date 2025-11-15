@@ -108,6 +108,8 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
         } catch (NumberFormatException e){
             System.err.println("Id invalido: "+ e.getMessage());
         }
+
+        
         return empleado;
     }
     //Actualizar empleado
@@ -151,7 +153,10 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
 
         while (rs.next()) {
             // Crear el objeto Empleado con el constructor correcto
+   
             Empleado empleado = new Empleado(
+                    
+                rs.getLong("id"),    
                 rs.getString("dni"),
                 rs.getString("nombre"),
                 rs.getString("apellido"),
@@ -163,7 +168,8 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
             );
 
             // Asignar el ID
-            empleado.setId(rs.getLong("id"));
+            //empleado.setId(rs.getLong("id"));
+
 
             // Crear y asignar el Legajo
             Legajo legajo = new Legajo();
@@ -179,9 +185,8 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
     }
         if (empleados.isEmpty()){
             System.out.println("No hay empleados en la base de datos");
-        } else {
-            System.out.println("\n LISTA DE EMPLEADOS");
-            empleados.forEach(System.out::println);
+
+
         }
     return empleados;
 }
@@ -189,7 +194,11 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
 
     @Override
     public void eliminar (Long id,Connection conn){
-    String sql = "DELETE FROM empleado WHERE id=?";
+
+    String sql = "UPDATE empleado SET eliminado = TRUE WHERE id = ?";
+
+
+    // baja logica de empleado
 
     try (PreparedStatement stmt = conn.prepareStatement(sql)){
         stmt.setLong(1, id);
@@ -202,6 +211,7 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
         }else {
             System.out.println("No se encontro el empleado con ID: "+id);
         }
+
     } catch (SQLException e){
         System.err.println("Error al eliminar el empleado: " + e.getMessage());
     } catch (NumberFormatException e){

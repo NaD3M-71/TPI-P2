@@ -202,17 +202,17 @@ public class LegajoService implements GenericService<Legajo>{
         }
     }
             
-        @Override
-        public List<Legajo> getAll() throws Exception {
+    @Override
+    public List<Legajo> getAll() throws Exception {
 
-            try (Connection conn = DatabaseConnection.getConnection()) {
+        try (Connection conn = DatabaseConnection.getConnection()) {
 
-                return legajoDAO.leerTodos(conn);
+            return legajoDAO.leerTodos(conn);
 
-            } catch (Exception e) {
-                System.err.println("Error al obtener todos los legajos: " + e.getMessage());
-                throw e;
-            }
-        }      
+        } catch (Exception e) {
+            System.err.println("Error al obtener todos los legajos: " + e.getMessage());
+            throw e;
+        }
+    }      
 }
 
