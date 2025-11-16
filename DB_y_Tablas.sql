@@ -26,3 +26,4 @@ CREATE TABLE empleado (
 );
 
 SELECT * FROM empleado;
+SELECT * FROM legajo;

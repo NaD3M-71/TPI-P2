@@ -66,7 +66,6 @@ public class Legajo {
     
     @Override
     public String toString() {
-
         return  "Legajo\n" +
             "ID: " + id + "\n" +
             "Número de legajo: " + nroLegajo + "\n" +
@@ -77,5 +76,4 @@ public class Legajo {
             "Eliminado: " + (eliminado == true ? "Si" : "No");
 
     }
-
 }
