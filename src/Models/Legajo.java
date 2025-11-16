@@ -65,13 +65,15 @@ public class Legajo {
     
     @Override
     public String toString() {
-        return "Legajo{" +
-               ", nroLegajo='" + nroLegajo + '\'' +
-               ", categoria='" + categoria + '\'' +
-               ", estado=" + estado +
-               ", fechaAlta=" + fechaAlta +
-               ", observaciones='" + observaciones + '\'' +
-               '}';
-    }
+
+        return "Legajo\n" +
+           "ID: " + id + "\n" +
+           "Número de legajo: " + nroLegajo + "\n" +
+           "Categoría: " + categoria + "\n" +
+           "Estado: " + estado + "\n" +
+           "Fecha de alta: " + fechaAlta + "\n" +
+           "Observaciones: " + (observaciones == null ? "Sin Observaciones" : observaciones) + "\n" +
+           "Eliminado: " + (eliminado ? "Si" : "No");
+}
 
 }

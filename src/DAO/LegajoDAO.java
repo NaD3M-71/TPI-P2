@@ -147,7 +147,7 @@ public class LegajoDAO implements GenericDAO<Legajo> {
             System.out.println("No hay legajos en la base de datos");
         } else {
             System.out.println("\n LISTA DE LEGAJOS");
-            legajos.forEach(System.out::println);
+            
         }
 
         return legajos;

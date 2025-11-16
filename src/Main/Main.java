@@ -12,6 +12,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
+import Main.AppMenu;
+
 
 /**
  *
@@ -27,6 +29,8 @@ public class Main {
         EmpleadoService empleadoService = new EmpleadoService();
 
         LegajoService legajoService =new LegajoService();
+        
+        AppMenu app = new AppMenu();
         try {
             //EmpleadoService empleadoService = new EmpleadoService();
 
@@ -110,8 +114,8 @@ public class Main {
             String[] opciones={"Ingresar Empleado","Listar empleados","Buscar empleado por ID","Actualizar Empleado","Listar legajos", "Buscar legajos por ID","Actualizar informacion de legajos", "Eliminar",};
             Runnable[] acciones = {
             
-                () -> { 
-                    try{
+                () -> { app.IngresarEmpleado();
+                    /*try{
                         System.out.println("\n-------INGRESAR EMPLEADO-------\n");
                         
                         System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
@@ -174,10 +178,10 @@ public class Main {
                         System.err.println("❌ ERROR de Validación: " + e.getMessage());
                         } catch (Exception e) {
                         System.err.println("❌ ERROR de Inserción (BD/Service): " + e.getMessage());
-                        }
+                        }*/
                 },
-                () -> {
-                    try{
+                () -> {app.listarEmpleado();
+                    /*try{
                         
                         System.out.println("\n-------LISTA DE EMPLEADOS-------\n");
                         
@@ -207,11 +211,11 @@ public class Main {
                         }
                     } catch (Exception e) {
                         System.err.println("❌ Error al obtener empleados: "+ e.getMessage());
-                    }
+                    }*/
                     
                 },    
-                () ->{
-                    try{
+                () ->{app.buscarEmpleadoId();
+                    /*try{
                         System.out.println("\n-------BUSQUEDA DE EMPLEADOS POR ID-------\n");
                         
                         System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
@@ -236,10 +240,10 @@ public class Main {
                         }
                     } catch( Exception e) {
                         System.out.println("❌ Error: " + e.getMessage());
-                      }
+                      }*/
                     },
-                () ->{
-                    try{
+                () ->{app.actualizaEmpleado();
+                    /*try{
                         System.out.println("\n-------ACTUALIZAR DATOS DE EMPLEADOS-------\n");
                         
                         System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
@@ -289,11 +293,11 @@ public class Main {
                         System.out.println("✔ Empleado actualizado");
                     } catch (Exception e){
                         System.out.println("❌ Error al actualizar: "+e.getMessage());
-                    }  
+                    }*/  
                     
                 },
-               ()->{
-                   try{
+               ()->{app.listarLegajos();
+                   /*try{
                         
                         System.out.println("\n-------LISTA DE LEGAJOS-------\n");
                         
@@ -311,10 +315,10 @@ public class Main {
                         }
                     } catch (Exception e) {
                         System.err.println("❌ Error al obtener legajos: "+ e.getMessage());
-                    }
+                    }*/
                 },
-               ()->{
-                    try{
+               ()->{app.buscarLejagoId();
+                    /*try{
                         System.out.println("\n-------BUSQUEDA DE LEGAJO POR ID-------\n");
                         
                         System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
@@ -338,10 +342,10 @@ public class Main {
                         }
                     } catch( Exception e) {
                         System.out.println("❌ Error: " + e.getMessage());
-                      }
+                      }*/
                },
-               () -> {
-                     try{  
+               () -> {app.actualizarLegajos();
+                     /*try{  
                         System.out.println("\n-------ACTUALIZAR DATOS DEL LEGAJO-------\n");
                         System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
                         
@@ -390,12 +394,12 @@ public class Main {
                         System.out.println("✔ Legajo actualizado");
                     } catch (Exception e){
                         System.out.println("❌ Error al actualizar: "+e.getMessage());
-                    }
+                    }*/
                    
                },
                      
-               () -> {
-                   try {
+               () -> {app.eliminarDatos();
+                   /*try {
                        System.out.println("\n-------ELIMINAR EMPLEADO Y LEGAJO-------\n");
                        
                        System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
@@ -415,8 +419,9 @@ public class Main {
                    } catch (Exception e){
                        System.err.println("❌ Error al eliminar empleado:");
                    }
-               }       
-            };
+               } */      
+            },
+        };       
         
             AppMenu.menuDesplegado(opciones, acciones);
     }
