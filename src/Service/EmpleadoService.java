@@ -100,12 +100,7 @@ public class EmpleadoService implements GenericService<Empleado>{
             if (empleado.getLegajo() == null) {
                 throw new IllegalArgumentException("El empleado debe tener un legajo asignado.");
             }
-            if (empleado.getLegajo().getId() == null) { /// TODO arreglar eso
-                throw new IllegalArgumentException("El legajo debe tener un ID para actualizar.");
-            }
-            
-            // update legajo
-             legajoDAO.actualizar(empleado.getLegajo(), conn);
+
              // update empleado
             empleadoDAO.actualizar(empleado, conn);
             

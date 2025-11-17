@@ -143,6 +143,7 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
             System.err.println("Id invalido " + e.getMessage());
         }
     }
+    
     @Override
     public List<Empleado> leerTodos(Connection conn) {
     String sql = "SELECT * FROM empleado";

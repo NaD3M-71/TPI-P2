@@ -98,8 +98,8 @@ public class LegajoService implements GenericService<Legajo>{
             
             // validacion de legajo existente
             Legajo existente = legajoDAO.leerPorId(legajo.getId(), conn);
-            if( existente != null){
-                throw new IllegalStateException("Ya existe un legajo con el ID especificado");
+            if( existente == null){
+                throw new IllegalStateException("NO existe un legajo con el ID especificado");
             }
             
             // actualizar legajo

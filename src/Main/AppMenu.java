@@ -124,249 +124,247 @@ public class AppMenu {
             }
     
 }
- public void listarEmpleado(){
-            try{
-                        
-                        System.out.println("\n-------LISTA DE EMPLEADOS-------\n");
-                        
-                        System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
-                        
-                        String confirmacion = scanner.nextLine().trim().toUpperCase();
+        public void listarEmpleado(){
+                   try{
 
-                        if (!confirmacion.equals("S")) {
-                        System.out.println("↩️ Operación cancelada. Volviendo al menú.");
-                        return; // Sale del método run
-                        }
-                        List<Empleado> empleados = empleadoService.getAll();
+                               System.out.println("\n-------LISTA DE EMPLEADOS-------\n");
 
-                        for (Empleado emp: empleados){
-                                                 
-                        
-                            System.out.println(
-                                "ID: " + emp.getId() + " | " +
-                                "Nombre: " + emp.getNombre() + " " + emp.getApellido() + " | " +
-                                "Área: " + emp.getArea() + " | " +
-                                "Legajo: " + (emp.getLegajo() != null ? emp.getLegajo().getNroLegajo() : "sin asignar")
-                            );
+                               System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
 
-                        
-                        }
-            } catch (Exception e) {
-                        System.err.println("❌ Error al obtener empleados: "+ e.getMessage());
-                    }
- }
- 
- public void buscarEmpleadoId(){
-            try{
-                        System.out.println("\n-------BUSQUEDA DE EMPLEADOS POR ID-------\n");
-                        
-                        System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
-                        
-                        String confirmacion = scanner.nextLine().trim().toUpperCase();
+                               String confirmacion = scanner.nextLine().trim().toUpperCase();
 
-                        if (!confirmacion.equals("S")) {
-                        System.out.println("↩️ Operación cancelada. Volviendo al menú.");
-                        return; // Sale del método run
-                        }
-                        
-                        
-                        System.out.println("Ingrese ID del empleado que desea buscar: ");
-                        long id =scanner.nextLong();
-                        
-                        Empleado empleado = empleadoService.getById(id);
-                        
-                        if (empleado != null){
-                            System.out.println("Empleado encontrado: \n" + empleado.toString());
-                        } else {
-                            System.out.println("No existe empleado con ese ID.");
-                        }
-            } catch( Exception e) {
-                        System.out.println("❌ Error: " + e.getMessage());
-                      }
- }
- public void actualizaEmpleado(){
-            try{
-                        System.out.println("\n-------ACTUALIZAR DATOS DE EMPLEADOS-------\n");
-                        
-                        System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
-                        
-                        String confirmacion = scanner.nextLine().trim().toUpperCase();
+                               if (!confirmacion.equals("S")) {
+                               System.out.println("↩️ Operación cancelada. Volviendo al menú.");
+                               return; // Sale del método run
+                               }
+                               List<Empleado> empleados = empleadoService.getAll();
 
-                        if (!confirmacion.equals("S")) {
-                        System.out.println("↩️ Operación cancelada. Volviendo al menú.");
-                        return; // Sale del método run
-                        }
-                        
-                                       
-                        System.out.println("Ingrese el ID del empleado que desea actualizad: ");
-                        long id = scanner.nextLong();
-                        scanner.nextLine(); // esto es para limpiar el buffer
-                        
-                        Empleado empleado = empleadoService.getById(id);
-                        if (empleado == null){
-                            System.out.println("No existe empleado con ese ID.");
-                            return;
-                        }
-                        
-                        System.out.println("Datos actuales: " + empleado);
-                        
-                        System.out.println("Ingrese nuevo DNI (DNI actual: "+ empleado.getDni() +"):");
-                        String dni = scanner.nextLine();
-                        
-                        System.out.println("Ingrese nuevo nombre (nombre actual: " +empleado.getNombre()+ "): ");
-                        String nombre= scanner.nextLine();
-                        
-                        System.out.println("Ingrese nuevo apellido (apellido actual: "+empleado.getApellido()+ "): ");
-                        String apellido= scanner.nextLine();
-                        
-                        System.out.println("Nuevo email (actual: "+empleado.getEmail()+"): ");
-                        String email = scanner.nextLine();
-                        
-                        System.out.println("Nueva Area: (actual: "+empleado.getArea()+"): ");
-                        String area = scanner.nextLine();
-                    
-                        empleado.setDni(dni);
-                        empleado.setNombre(nombre);
-                        empleado.setApellido(apellido);
-                        empleado.setEmail(email);
-                        empleado.setArea(area);
-                        
-                        empleadoService.actualizar(empleado);
-                        System.out.println("✔ Empleado actualizado");
-            } catch (Exception e){
-                        System.out.println("❌ Error al actualizar: "+e.getMessage());
-                    }  
+                               for (Empleado emp: empleados){
 
- }
- 
- public void listarLegajos(){
-            try{
-                        
-                        System.out.println("\n-------LISTA DE LEGAJOS-------\n");
-                        
-                        System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
-                        
-                        String confirmacion = scanner.nextLine().trim().toUpperCase();
 
-                        if (!confirmacion.equals("S")) {
-                        System.out.println("↩️ Operación cancelada. Volviendo al menú.");
-                        return; // Sale del método run
-                        }
-                        List<Legajo> legajos = legajoService.getAll();
-                        for (Legajo legajo: legajos){
-                            System.out.println(
-                                "ID: " + legajo.getId() + " | " +
-                                "Número de legajo: " + legajo.getNroLegajo() + " | " +
-                                "Categoría: " + legajo.getCategoria() + " | " +
-                                "Estado: " + legajo.getEstado()
-                            );
-                        }
-            } catch (Exception e) {
-                        System.err.println("❌ Error al obtener legajos: "+ e.getMessage());
-            }
- }
-public void buscarLejagoId(){
-            try{
-                        System.out.println("\n-------BUSQUEDA DE LEGAJO POR ID-------\n");
-                        
-                        System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
-                        
-                        String confirmacion = scanner.nextLine().trim().toUpperCase();
+                                   System.out.println(
+                                       "ID: " + emp.getId() + " | " +
+                                       "Nombre: " + emp.getNombre() + " " + emp.getApellido() + " | " +
+                                       "Área: " + emp.getArea() + " | " +
+                                       "Legajo: " + (emp.getLegajo() != null ? emp.getLegajo().getNroLegajo() : "sin asignar")
+                                   );
 
-                        if (!confirmacion.equals("S")) {
-                        System.out.println("↩️ Operación cancelada. Volviendo al menú.");
-                        return; // Sale del método run
-                        }
-                        
-                        System.out.println("Ingrese ID del legajo que desea buscar: ");
-                        long id =scanner.nextLong();
-                        
-                        Legajo legajo = legajoService.getById(id);
-                        
-                        if (legajo != null){
-                            System.out.println("Legajo encontrado: " + legajo);
-                        } else {
-                            System.out.println("No existe el legajo con ese ID.");
-                        }
-            } catch( Exception e) {
-                        System.out.println("❌ Error: " + e.getMessage());
-                      }
-}
- public void actualizarLegajos(){
-            try{  
-                        System.out.println("\n-------ACTUALIZAR DATOS DEL LEGAJO-------\n");
-                        System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
-                        
-                        String confirmacion = scanner.nextLine().trim().toUpperCase();
 
-                        if (!confirmacion.equals("S")) {
-                        System.out.println("↩️ Operación cancelada. Volviendo al menú.");
-                        return; // Sale del método run
-                        }
-                        
-                        System.out.println("Ingrese el ID del legajo que desea actualizad: ");
-                        long id = scanner.nextLong();
-                        scanner.nextLine(); // esto es para limpiar el buffer
-                        
-                        Legajo legajo = legajoService.getById(id);
-                        if (legajo == null){
-                            System.out.println("No existe legajo con ese ID.");
-                            return;
-                        }
-                        
-                        System.out.println("Datos actuales: " + legajo);
-                        
-                        System.out.println("Ingrese nuevo Nro de legajo (Legajo actual: "+ legajo.getNroLegajo() +"):");
-                        String Nlegajo = scanner.nextLine();
-                        
-                        System.out.println("Ingrese nueva categoria (categoria actual: " +legajo.getCategoria()+ "): ");
-                        String categoria= scanner.nextLine();
-                        
-                        System.out.println("Ingrese nuevo estado (estado actual: "+legajo.getEstado()+ "): ");
-                        Estado estado= Estado.valueOf(scanner.nextLine().toUpperCase());
-                        
-                        System.out.println("Modificar la fecha de alta? (fecha de alta original: "+legajo.getFechaAlta()+"): ");
-                        String fechaStr = scanner.nextLine();
-                        LocalDate fecha=LocalDate.parse(fechaStr);
-                        
-                        System.out.println("Modificar observaciones: (actuales: "+legajo.getObservaciones()+"): ");
-                        String observaciones = scanner.nextLine();
-                    
-                        legajo.setNroLegajo(Nlegajo);
-                        legajo.setCategoria(categoria);
-                        legajo.setEstado(estado);
-                        legajo.setFechaAlta(fecha);
-                        legajo.setObservaciones(observaciones);
-                                                
-                        legajoService.actualizar(legajo);
-                        System.out.println("✔ Legajo actualizado");
-            } catch (Exception e){
-                        System.out.println("❌ Error al actualizar: "+e.getMessage());
-            }
+                               }
+                   } catch (Exception e) {
+                               System.err.println("❌ Error al obtener empleados: "+ e.getMessage());
+                           }
+        }
+        public void buscarEmpleadoId(){
+                   try{
+                               System.out.println("\n-------BUSQUEDA DE EMPLEADOS POR ID-------\n");
 
- }
- 
- public void eliminarDatos(){
-            try {
-                       System.out.println("\n-------ELIMINAR EMPLEADO Y LEGAJO-------\n");
-                       
-                       System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
-                        
-                        String confirmacion = scanner.nextLine().trim().toUpperCase();
+                               System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
 
-                        if (!confirmacion.equals("S")) {
-                        System.out.println("↩️ Operación cancelada. Volviendo al menú.");
-                        return; // Sale del método run
-                        }
-                        
-                       System.out.println("Ingrese el ID del empleado que desea eliminar: ");
-                       Long id =scanner.nextLong();
-                       
-                       empleadoService.eliminar(id);
-                       
-            } catch (Exception e){
-                       System.err.println("❌ Error al eliminar empleado:");
+                               String confirmacion = scanner.nextLine().trim().toUpperCase();
+
+                               if (!confirmacion.equals("S")) {
+                               System.out.println("↩️ Operación cancelada. Volviendo al menú.");
+                               return; // Sale del método run
+                               }
+
+
+                               System.out.println("Ingrese ID del empleado que desea buscar: ");
+                               long id =scanner.nextLong();
+
+                               Empleado empleado = empleadoService.getById(id);
+
+                               if (empleado != null){
+                                   System.out.println("Empleado encontrado: \n" + empleado.toString());
+                               } else {
+                                   System.out.println("No existe empleado con ese ID.");
+                               }
+                   } catch( Exception e) {
+                               System.out.println("❌ Error: " + e.getMessage());
+                             }
+        }
+        public void actualizaEmpleado(){
+                   try{
+                               System.out.println("\n-------ACTUALIZAR DATOS DE EMPLEADOS-------\n");
+
+                               System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
+
+                               String confirmacion = scanner.nextLine().trim().toUpperCase();
+
+                               if (!confirmacion.equals("S")) {
+                               System.out.println("↩️ Operación cancelada. Volviendo al menú.asdasd");
+                               return; // Sale del método run
+                               }
+
+
+                               System.out.println("Ingrese el ID del empleado que desea actualizad: ");
+                               long id = scanner.nextLong();
+                               scanner.nextLine(); // esto es para limpiar el buffer
+
+                               Empleado empleado = empleadoService.getById(id);
+                               if (empleado == null){
+                                   System.out.println("No existe empleado con ese ID.");
+                                   return;
+                               }
+
+                               System.out.println("Datos actuales: " + empleado);
+
+                               System.out.println("Ingrese nuevo DNI (DNI actual: "+ empleado.getDni() +"):");
+                               String dni = scanner.nextLine();
+
+                               System.out.println("Ingrese nuevo nombre (nombre actual: " +empleado.getNombre()+ "): ");
+                               String nombre= scanner.nextLine();
+
+                               System.out.println("Ingrese nuevo apellido (apellido actual: "+empleado.getApellido()+ "): ");
+                               String apellido= scanner.nextLine();
+
+                               System.out.println("Nuevo email (actual: "+empleado.getEmail()+"): ");
+                               String email = scanner.nextLine();
+
+                               System.out.println("Nueva Area: (actual: "+empleado.getArea()+"): ");
+                               String area = scanner.nextLine();
+
+                               empleado.setDni(dni);
+                               empleado.setNombre(nombre);
+                               empleado.setApellido(apellido);
+                               empleado.setEmail(email);
+                               empleado.setArea(area);
+
+                               empleadoService.actualizar(empleado);
+                               System.out.println("✔ Empleado actualizado");
+                   } catch (Exception e){
+                               System.out.println("❌ Error al actualizar: "+e.getMessage());
+                           }  
+
+        }
+
+        public void listarLegajos(){
+                   try{
+
+                               System.out.println("\n-------LISTA DE LEGAJOS-------\n");
+
+                               System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
+
+                               String confirmacion = scanner.nextLine().trim().toUpperCase();
+
+                               if (!confirmacion.equals("S")) {
+                               System.out.println("↩️ Operación cancelada. Volviendo al menú.");
+                               return; // Sale del método run
+                               }
+                               List<Legajo> legajos = legajoService.getAll();
+                               for (Legajo legajo: legajos){
+                                   System.out.println(
+                                       "ID: " + legajo.getId() + " | " +
+                                       "Número de legajo: " + legajo.getNroLegajo() + " | " +
+                                       "Categoría: " + legajo.getCategoria() + " | " +
+                                       "Estado: " + legajo.getEstado()
+                                   );
+                               }
+                   } catch (Exception e) {
+                               System.err.println("❌ Error al obtener legajos: "+ e.getMessage());
                    }
-           }   
- }
-        
+        }
+        public void buscarLejagoId(){
+                    try{
+                                System.out.println("\n-------BUSQUEDA DE LEGAJO POR ID-------\n");
+
+                                System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
+
+                                String confirmacion = scanner.nextLine().trim().toUpperCase();
+
+                                if (!confirmacion.equals("S")) {
+                                System.out.println("↩️ Operación cancelada. Volviendo al menú.");
+                                return; // Sale del método run
+                                }
+
+                                System.out.println("Ingrese ID del legajo que desea buscar: ");
+                                long id =scanner.nextLong();
+
+                                Legajo legajo = legajoService.getById(id);
+
+                                if (legajo != null){
+                                    System.out.println("Legajo encontrado: " + legajo);
+                                } else {
+                                    System.out.println("No existe el legajo con ese ID.");
+                                }
+                    } catch( Exception e) {
+                                System.out.println("❌ Error: " + e.getMessage());
+                              }
+        }
+        public void actualizarLegajos(){
+                   try{  
+                               System.out.println("\n-------ACTUALIZAR DATOS DEL LEGAJO-------\n");
+                               System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
+
+                               String confirmacion = scanner.nextLine().trim().toUpperCase();
+
+                               if (!confirmacion.equals("S")) {
+                               System.out.println("↩️ Operación cancelada. Volviendo al menú.");
+                               return; // Sale del método run
+                               }
+
+                               System.out.println("Ingrese el ID del legajo que desea actualizad: ");
+                               long id = scanner.nextLong();
+                               scanner.nextLine(); // esto es para limpiar el buffer
+
+                               Legajo legajo = legajoService.getById(id);
+                               if (legajo == null){
+                                   System.out.println("No existe legajo con ese ID.");
+                                   return;
+                               }
+
+                               System.out.println("Datos actuales: " + legajo);
+
+                               System.out.println("Ingrese nuevo Nro de legajo (Legajo actual: "+ legajo.getNroLegajo() +"):");
+                               String Nlegajo = scanner.nextLine();
+
+                               System.out.println("Ingrese nueva categoria (categoria actual: " +legajo.getCategoria()+ "): ");
+                               String categoria= scanner.nextLine();
+
+                               System.out.println("Ingrese nuevo estado (estado actual: "+legajo.getEstado()+ "): ");
+                               Estado estado= Estado.valueOf(scanner.nextLine().toUpperCase());
+
+                               System.out.println("Modificar la fecha de alta? (fecha de alta original: "+legajo.getFechaAlta()+"): ");
+                               String fechaStr = scanner.nextLine();
+                               LocalDate fecha=LocalDate.parse(fechaStr);
+
+                               System.out.println("Modificar observaciones: (actuales: "+legajo.getObservaciones()+"): ");
+                               String observaciones = scanner.nextLine();
+
+                               legajo.setNroLegajo(Nlegajo);
+                               legajo.setCategoria(categoria);
+                               legajo.setEstado(estado);
+                               legajo.setFechaAlta(fecha);
+                               legajo.setObservaciones(observaciones);
+
+                               legajoService.actualizar(legajo);
+                               System.out.println("✔ Legajo actualizado");
+                   } catch (Exception e){
+                               System.out.println("❌ Error al actualizar: "+e.getMessage());
+                   }
+
+        }
+
+        public void eliminarDatos(){
+                   try {
+                              System.out.println("\n-------ELIMINAR EMPLEADO Y LEGAJO-------\n");
+
+                              System.out.println("Presione 'S' para continuar o cualquier otra tecla para volver al menú.");
+
+                               String confirmacion = scanner.nextLine().trim().toUpperCase();
+
+                               if (!confirmacion.equals("S")) {
+                               System.out.println("↩️ Operación cancelada. Volviendo al menú.");
+                               return; // Sale del método run
+                               }
+
+                              System.out.println("Ingrese el ID del empleado que desea eliminar: ");
+                              Long id =scanner.nextLong();
+
+                              empleadoService.eliminar(id);
+
+                   } catch (Exception e){
+                              System.err.println("❌ Error al eliminar empleado:");
+                          }
+                  }   
+        }
