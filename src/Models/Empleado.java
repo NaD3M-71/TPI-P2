@@ -92,41 +92,7 @@ public class Empleado {
     public void setLegajo(Legajo legajo){
         this.legajo = legajo;
     }
-    //crearEmpleado
-    public static Empleado crearEmpleado(
-
-        long id,    
-        String dni,
-        String nombre,
-        String apellido,
-        String email,
-        String categoria,
-        Estado estado,
-        String observaciones,
-        String area
-
-    ){
-        java.time.LocalDate fechaIngreso = java.time.LocalDate.now();
-
-        Legajo legajo = new Legajo();
-        legajo.setNroLegajo(Legajo.generarNroLegajoUnico()); //TODO
-        legajo.setEliminado(false);
-        legajo.setCategoria(categoria);
-        legajo.setEstado(estado);
-        legajo.setFechaAlta(fechaIngreso);
-        legajo.setObservaciones(observaciones);
-
-
-        return new Empleado(id,dni, nombre, apellido, email, false, fechaIngreso, area, legajo);
-
-    }
-
-
-    public void mostrarLegajo(Legajo legajo){
-        
-    }
     
-
     // setters
     public void setId(Long id) {
         this.id = id;

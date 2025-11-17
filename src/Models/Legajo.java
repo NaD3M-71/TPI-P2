@@ -53,15 +53,7 @@ public class Legajo {
     public void setEstado(Estado estado) { this.estado = estado; }
     public void setFechaAlta(java.time.LocalDate fechaAlta) { this.fechaAlta = fechaAlta; }
     public void setObservaciones(String observaciones) { this.observaciones = observaciones; }
-
-
     public void setId(Long id) { this.id = id;}
-    
-
-    
-    public static String generarNroLegajoUnico() {
-    return "LEG-" + java.util.UUID.randomUUID().toString();
-    }
     
     
     @Override
