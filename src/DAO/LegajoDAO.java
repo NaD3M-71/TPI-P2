@@ -123,7 +123,7 @@ public class LegajoDAO implements GenericDAO<Legajo> {
     // Mostrar todos los legajos.
     @Override
     public List<Legajo> leerTodos(Connection conn) {
-        String sql = "SELECT * FROM legajo";
+        String sql = "SELECT * FROM legajo WHERE eliminado = 0";
         List<Legajo> legajos = new ArrayList<>();
 
         try (PreparedStatement stmt = conn.prepareStatement(sql);

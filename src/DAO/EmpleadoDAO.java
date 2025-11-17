@@ -146,7 +146,7 @@ public class EmpleadoDAO implements GenericDAO<Empleado>{
     
     @Override
     public List<Empleado> leerTodos(Connection conn) {
-    String sql = "SELECT * FROM empleado";
+    String sql = "SELECT * FROM empleado WHERE eliminado = 0";
     List<Empleado> empleados = new ArrayList<>();
 
     try (PreparedStatement stmt = conn.prepareStatement(sql);
